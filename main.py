@@ -8,14 +8,14 @@ app = Flask(__name__)
 with open("config.json") as json_data_file:
     config = json.load(json_data_file)
 
-client = AppSearch(
+client = AppSearch(  
     config['appsearch']['base_endpoint'],
     http_auth=config['appsearch']['api_key'])
 
 engine_name = config['appsearch']['engine_name']
 
 
-@app.route("/")
+@app.route("/") 
 def home():
     data = client.search(engine_name, body={
         "query": ""
